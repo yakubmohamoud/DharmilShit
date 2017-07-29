@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<H1>Users</H1>
+		<input id="id" placeholder="User ID" class="form-control"> <input
+			id="username" placeholder="username" class="form-control"> <input
+			id="password" placeholder="password" type="password"
+			class="form-control">
+
+		<button id="create" class="btn btn-block btn-primary">CREATE</button>
+		<button id="delete" class="btn btn-block btn-primary">DELETE</button>
+		<button id="update" class="btn btn-block btn-primary">UPDATE</button>
+		<button id="read" class="btn btn-block btn-primary">Login</button>
+		<script>
+			$(function() {
+
+				$("#create").click(createHandler);
+				$("#update").click(updateHandler);
+				$("#read").click(readHandler);
+				$("#delete").click(deleteHandler);
+			
+
+			});
+			function createHandler() {
+				var newUser = {
+					"id" : $("#id").val(),
+					"username" : $("#username").val(),
+					"password" : $("#password").val()
+
+				};
+				createUser(newUser);
+			}
+			
+			function readHandler() {
+				var newUser = {
+					"id" : $("#id").val(),
+					"username" : $("#username").val(),
+					"password" : $("#password").val()
+
+				};
+				readUser(newUser);
+			}
+			function updateHandler() {
+				var newUser = {
+					"id" : $("#id").val(),
+					"username" : $("#username").val(),
+					"password" : $("#password").val()
+
+				};
+				updateUser($("#id").val(), newUser);
+
+			}
+			
+			function deleteHandler() {
+				var newUser = {
+					"id" : $("#id").val(),
+					"username" : $("#username").val(),
+					"password" : $("#password").val()
+
+				};
+				deleteUser($("#id").val(), newUser);
+
+			}
+
+			function createUser(user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/user",
+					type : "post",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+			function updateUser(id, user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/user/" + id,
+					type : "put",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+			
+			function deleteUser(id, user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/user/" + id,
+					type : "delete",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+		
+		</script>
+	</div>
+</body>
+</html>

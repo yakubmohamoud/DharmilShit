@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SignUp</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<h1>Sign up Page</h1>
+	<div class="container">
+		<input id="id" placeholder="id" class="form-control"> <input
+			id="email" placeholder="email" class="form-control"> <input
+			id="firstName" placeholder="firstName" class="form-control">
+		<input id="lastName" placeholder=lastName class="form-control">
+
+		<input id="otherNames" placeholder="otherNames" class="form-control">
+
+		<input id="propertyId" placeholder="propertyId" class="form-control">
+		<button id="Login"
+			onclick="location.href='http://localhost:8086/Y3844644/Login.html'"
+			class="btn btn-block btn-primary">Already have a login</button>
+
+
+		<button id="create" class="btn btn-block btn-primary">Create
+			Account</button>
+		<script>
+			$(function() {
+
+				$("#create").click(createHandler);
+
+			});
+			function createHandler() {
+				var newUser = {
+					"TENANTID" : $("#id").val(),
+					"email" : $("#email").val(),
+					"firstName" : $("#firstName").val(),
+					"lastName" : $("#lastName").val(),
+					"OTHERNAMES" : $("#otherName").val(),
+					"PROPERTYID" : $("#propertyId").val()
+
+				};
+				createUser(newUser);
+			}
+
+			function createUser(user) {
+				$
+						.ajax({
+
+							url : "http://localhost:8086/Y3844644/rest/tenants",
+							type : "post",
+							data : JSON.stringify(user),
+							dataType : "json",
+							contentType : "application/json",
+							success : function(response) {
+
+								window.location = 'http://localhost:8086/Y3844644/FaultReporting.html'
+
+							}
+						});
+			}
+		</script>
+	</div>
+<body>
+
+</body>
+</html>

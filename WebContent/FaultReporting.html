@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Fault reporting</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<h1>Sign up Page</h1>
+	<div class="container">
+		<input id="maintenanceId" placeholder="maintenance Id" class="form-control"> 
+		<input id="tenantId" placeholder=tenant Id class="form-control"> 
+		<input id="type" placeholder="Type of work" class="form-control">
+		<input id="status" placeholder="True or false" class="form-control">
+		<input id="description" placeholder="description" class="form-control">
+	
+		
+		<button id="create" class="btn btn-block btn-primary">Create
+			Account</button>
+		<script>
+			$(function() {
+
+				$("#create").click(createHandler);
+
+			});
+			function createHandler() {
+				var newUser = {
+					"maintenanceId" : $("#maintenanceId").val(),
+					"tenantId" : $("#tenantId").val(),
+					"type" : $("#firstName").val(),
+					"status" : $("#type").val(),
+					"description" : $("#description").val()
+			
+
+				};
+				createUser(newUser);
+			}
+
+			function createUser(user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/maintenance",
+					type : "post",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+		</script>
+	</div>
+<body>
+
+</body>
+</html>

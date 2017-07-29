@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<H1>Users</H1>
+		<input id="id" placeholder="User ID" class="form-control">
+
+
+
+		<button id="read" class="btn btn-block btn-primary">Login</button>
+		<script>
+			$(function() {
+
+				$("#read").click(readHandler);
+
+			});
+
+			function readHandler() {
+				var newUser = {
+					"id" : $("#id").val()
+
+				};
+				readUser(newUser);
+			}
+
+			function readUser(id) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/works/"
+							+ id,
+					type : "get",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+		</script>
+	</div>
+
+</body>
+</html>

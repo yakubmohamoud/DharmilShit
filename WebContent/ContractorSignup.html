@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Contractor Signup</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<h1>Contractor</h1>
+	<div class="container">
+		<input id="contractorId" placeholder="contractor Id" class="form-control"> 
+		<input id="lastName" placeholder=lastName class="form-control"> 
+		<input id="firstName" placeholder="firstName" class="form-control">
+		<input id="otherNames" placeholder="otherNames" class="form-control">
+		<input id="email" placeholder="email" class="form-control">
+	
+		
+		<button id="create" class="btn btn-block btn-primary">Create
+		
+		
+			Account</button>
+			<button id="Login" onclick="location.href='http://localhost:8086/Y3844644/ContractorsLogin.html'" class="btn btn-block btn-primary">Already have a login</button>
+		
+			
+		<script>
+			$(function() {
+
+				$("#create").click(createHandler);
+
+			});
+			function createHandler() {
+				var newUser = {
+					"contractorId" : $("#contractorId").val(),
+					"lastName" : $("#lastName").val(),
+					"firstName" : $("#firstName").val(),
+					"otherNames" : $("#otherNames").val(),
+					"email" : $("#email").val()
+					
+
+				};
+				createUser(newUser);
+			}
+
+			function createUser(user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/contractors",
+					type : "post",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+						window.location = 'http://localhost:8086/Y3844644/HomePage.html'
+
+					}
+				});
+			}
+		</script>
+	</div>
+
+</body>
+</html>

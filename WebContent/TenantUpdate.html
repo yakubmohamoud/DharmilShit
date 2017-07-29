@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<h1>Update details</h1>
+<body>
+	<div class="container">
+		<H1>Users</H1>
+		<input id="tenantId" placeholder="tenantId" class="form-control"> <input
+			id="lastName" placeholder=lastName class="form-control"> <input
+			id="otherNames" placeholder="otherNames" class="form-control">
+		<input id="email" placeholder="email" class="form-control"> 
+		<input id="propertyId" placeholder="propertyId" class="form-control">
+		<button id="update" class="btn btn-block btn-primary">Update</button>
+		<script>
+			$(function() {
+
+				$("#update").click(updateHandler);
+
+			});
+
+			function updateHandler() {
+				var newUser = {
+					"tenantId" : $("#tenantId").val(),
+					"lastName" : $("#lastName").val(),
+					"otherNames" : $("#otherNames").val(),
+					"email" : $("#email").val(),
+					"propertyId" : $("#propertyId").val()
+
+				};
+				updateUser($("#id").val(), newUser);
+
+			}
+
+			function updateUser(id, user) {
+				$.ajax({
+
+					url : "http://localhost:8086/Y3844644/rest/tenants"+ tenantId,
+					type : "put",
+					data : JSON.stringify(user),
+					dataType : "json",
+					contentType : "application/json",
+					success : function(response) {
+
+					}
+				});
+			}
+		</script>
+	</div>
+
+</body>
+</html>
